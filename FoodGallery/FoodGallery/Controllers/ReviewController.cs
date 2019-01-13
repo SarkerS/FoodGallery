@@ -51,23 +51,25 @@ namespace FoodGallery.Controllers
         // GET: Review/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+
+            var edit = _localdata.Single(i => i.Id == id);
+
+            return View(edit);
         }
 
         // POST: Review/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
-            try
+            var edit = _localdata.Single(i => i.Id == id);
+            if (TryUpdateModel(edit))
             {
                 // TODO: Add update logic here
+                // and database
 
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View(edit);
         }
 
         // GET: Review/Delete/5
