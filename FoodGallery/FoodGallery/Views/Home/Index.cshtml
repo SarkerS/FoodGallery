@@ -2,10 +2,11 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1 text-align: center>Food Gallery</h1>
-    <p class="lead" text-align: center>A popular Wibsite for Food lovers!!! </p>
-    <p text-align: center><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div class="jumbotron text-md-center">
+    <img src="~/Content/Logo.gif" width="50" height="50" class="d-inline-block align-top" alt="">
+    <h1 class="fontnavbarlogo text-success">Food Gallery</h1>
+    <p class="lead text-danger" text-align: center>A popular Wibsite for Food lovers!!! </p>
+    <p text-align: center><a href=@Url.Action("About", "Home") class="btn btn-primary btn-sm">Learn more &raquo;</a></p>
 </div>
 
 <div class="row">
