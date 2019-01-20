@@ -13,11 +13,11 @@ namespace FoodGallery.Controllers
         // GET: Review
         public ActionResult Index()
         {
-            var datar = from r in _localdata
-                        orderby r.City
-                        select r;
+            //var datar = from r in _localdata
+            //            orderby r.City
+            //            select r;
 
-            return View(datar);
+            return View();
         }
 
         // GET: Review/Details/5
@@ -52,24 +52,24 @@ namespace FoodGallery.Controllers
         public ActionResult Edit(int id)
         {
 
-            var edit = _localdata.Single(i => i.Id == id);
+//            var edit = _localdata.Single(i => i.Id == id);
 
-            return View(edit);
+            return View();
         }
 
         // POST: Review/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
-            var edit = _localdata.Single(i => i.Id == id);
-            if (TryUpdateModel(edit))
-            {
-                // TODO: Add update logic here
-                // and database
+            //var edit = _localdata.Single(i => i.Id == id);
+            //if (TryUpdateModel(edit))
+            //{
+            //    // TODO: Add update logic here
+            //    // and database
 
-                return RedirectToAction("Index");
-            }
-            return View(edit);
+            //    return RedirectToAction("Index");
+            //}
+            return View();
         }
 
         // GET: Review/Delete/5
@@ -94,13 +94,7 @@ namespace FoodGallery.Controllers
             }
         }
 
-        static List<RestaurentReview> _localdata = new List<RestaurentReview>() {
 
-        new RestaurentReview { Id = 1, Name = "Five Gays", City = "Winnipeg", Country = "Canada", Rating = 7.5},
-        new RestaurentReview { Id = 2, Name = "Tim Horton", City = "Rgina", Country = "Bangladesh", Rating = 8.5}
-
-
-        };
 
 
     }
