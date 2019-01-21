@@ -10,6 +10,7 @@ namespace FoodGallery.Models
         public int Id { get; set; }
         public double Rating { get; set; }
         public string Comment { get; set; }
+        public string Reviewer { get; set; }
         public int RestaurentID { get; set; }
 
     }
