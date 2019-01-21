@@ -1,16 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Web;
 using System.Web.Mvc;
+using FoodGallery.Models;
 
 namespace FoodGallery.Controllers
 {
     public class HomeController : Controller
+
     {
+        EntityDB _database = new EntityDB();
+
         public ActionResult Index()
         {
-            return View();
+            var dbtolist = _database.Restaurents.ToList();
+
+            return View(dbtolist);
         }
 
         public ActionResult About()
@@ -26,5 +33,16 @@ namespace FoodGallery.Controllers
 
             return View();
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (_database != null)
+            {
+                _database.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+
     }
 }
