@@ -15,9 +15,18 @@ namespace FoodGallery.Controllers
 
         public ActionResult Index()
         {
-            var dbtolist = _database.Restaurents.ToList();
+            var view = _database.Restaurents.
+                                  OrderByDescending(r => r.Reviews.Average(ratings => ratings.Rating))
+                                  .Select(r => new RestaurentListView
+                                  {
+                                      Id = r.Id,
+                                      Name = r.Name,
+                                      City = r.City,
+                                      Country = r.Country,
+                                      NumberofReviews = r.Reviews.Count()
+                                  });
 
-            return View(dbtolist);
+            return View(view);
         }
 
         public ActionResult About()

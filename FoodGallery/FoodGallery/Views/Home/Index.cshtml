@@ -1,4 +1,4 @@
-﻿@model IEnumerable<FoodGallery.Models.Restaurent>
+﻿@model IEnumerable<FoodGallery.Models.RestaurentListView>
 
 @{
     ViewBag.Title = "Home Page";
@@ -11,7 +11,16 @@
     <p text-align: center><a href=@Url.Action("About", "Home") class="btn btn-primary btn-sm">Learn more &raquo;</a></p>
 </div>
 
-<table class="table alternate_color">
+
+<form method="get" class="form-inline align-self-center mx-auto p-sm-2">
+    <input class="form-control col-sm-10 text-center" type="text" placeholder="Search Restaurent by Name">
+    <button class="btn btn-success col-sm-2" type="submit">Search</button>
+</form>
+
+
+
+
+<table class="table alternate_color table-hover">
         <tr class="table-primary">
             <th>
                 @Html.DisplayNameFor(model => model.Name)
@@ -21,6 +30,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Country)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberofReviews)
             </th>
             <th class= "text-right">
                 Operations
@@ -38,6 +50,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberofReviews)
             </td>
             <td class="text-right">
                 @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
