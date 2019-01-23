@@ -198,6 +198,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RestaurentsController.cs" />
     <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -281,6 +282,16 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Review\Index.cshtml" />
     <Content Include="Views\Review\Edit.cshtml" />
+    <Content Include="Views\Restaurent\Create.cshtml" />
+    <Content Include="Views\Restaurent\Delete.cshtml" />
+    <Content Include="Views\Restaurent\Details.cshtml" />
+    <Content Include="Views\Restaurent\Edit.cshtml" />
+    <Content Include="Views\Restaurent\Index.cshtml" />
+    <Content Include="Views\Restaurents\Create.cshtml" />
+    <Content Include="Views\Restaurents\Delete.cshtml" />
+    <Content Include="Views\Restaurents\Details.cshtml" />
+    <Content Include="Views\Restaurents\Edit.cshtml" />
+    <Content Include="Views\Restaurents\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
