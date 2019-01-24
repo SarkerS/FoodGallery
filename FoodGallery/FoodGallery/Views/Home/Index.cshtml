@@ -47,7 +47,7 @@
                         </tr>
                         <tr>
                             <td>
-                                @Html.DisplayNameFor(model => model.NumberofReviews)
+                                Number of Reviews
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.NumberofReviews)
@@ -55,6 +55,7 @@
 
                         </tr>
                     </table>
+                    <p text-align center><a href=  @Url.Action("Index", "Review", new { id = item.Id })  class="btn btn-secondary btn-sm"> See Reviews &raquo;</a></p>
 
                 </div>
             </div>

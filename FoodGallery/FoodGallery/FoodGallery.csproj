@@ -280,18 +280,15 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Review\Index.cshtml" />
-    <Content Include="Views\Review\Edit.cshtml" />
-    <Content Include="Views\Restaurent\Create.cshtml" />
-    <Content Include="Views\Restaurent\Delete.cshtml" />
-    <Content Include="Views\Restaurent\Details.cshtml" />
-    <Content Include="Views\Restaurent\Edit.cshtml" />
-    <Content Include="Views\Restaurent\Index.cshtml" />
     <Content Include="Views\Restaurents\Create.cshtml" />
     <Content Include="Views\Restaurents\Delete.cshtml" />
-    <Content Include="Views\Restaurents\Details.cshtml" />
     <Content Include="Views\Restaurents\Edit.cshtml" />
     <Content Include="Views\Restaurents\Index.cshtml" />
+    <Content Include="Views\Review\Index.cshtml" />
+    <Content Include="Views\Review\_Reviews.cshtml" />
+    <Content Include="Views\Review\Create.cshtml" />
+    <Content Include="Views\Review\Edit.cshtml" />
+    <Content Include="Views\Review\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

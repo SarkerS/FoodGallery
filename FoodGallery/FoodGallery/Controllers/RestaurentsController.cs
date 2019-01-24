@@ -21,19 +21,19 @@ namespace FoodGallery.Controllers
         }
 
         // GET: Restaurents/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Restaurent restaurent = db.Restaurents.Find(id);
-            if (restaurent == null)
-            {
-                return HttpNotFound();
-            }
-            return View(restaurent);
-        }
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Restaurent restaurent = db.Restaurents.Find(id);
+        //    if (restaurent == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(restaurent);
+        //}
 
         // GET: Restaurents/Create
         public ActionResult Create()

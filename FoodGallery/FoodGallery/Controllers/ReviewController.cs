@@ -4,27 +4,34 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using FoodGallery.Models;
-
+using System.Data.Entity;
+using System.Net;
 
 namespace FoodGallery.Controllers
 {
     public class ReviewController : Controller
     {
+        EntityDB database = new EntityDB();
         // GET: Review
-        public ActionResult Index()
+        public ActionResult Index([Bind(Prefix ="id")] int restaurentId)
         {
-            //var datar = from r in _localdata
-            //            orderby r.City
-            //            select r;
+            var restaurent = database.Restaurents.Find(restaurentId);
+            if (restaurent != null)
+            {
+                return View(restaurent);
+            }
 
             return View();
         }
 
-        // GET: Review/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
+
+
+
+        //        // GET: Review/Details/5
+        //        public ActionResult Details(int id)
+        //        {
+        //            return View();
+        //        }
 
         // GET: Review/Create
         public ActionResult Create()
@@ -34,67 +41,74 @@ namespace FoodGallery.Controllers
 
         // POST: Review/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(RestaurentReview review)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                database.Reviews.Add(review);
+                database.SaveChanges();
+                return RedirectToAction("Index", new { id = review.RestaurentID });
             }
-            catch
-            {
-                return View();
-            }
+            return View(review);
         }
 
         // GET: Review/Edit/5
         public ActionResult Edit(int id)
         {
 
-//            var edit = _localdata.Single(i => i.Id == id);
+            var edit = database.Reviews.Find(id);
 
-            return View();
+            return View(edit);
         }
 
         // POST: Review/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(RestaurentReview review)
         {
-            //var edit = _localdata.Single(i => i.Id == id);
-            //if (TryUpdateModel(edit))
-            //{
-            //    // TODO: Add update logic here
-            //    // and database
-
-            //    return RedirectToAction("Index");
-            //}
-            return View();
-        }
-
-        // GET: Review/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Review/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add delete logic here
+                database.Entry(review).State = EntityState.Modified;
+                database.SaveChanges();
+                return RedirectToAction("Index", new { id = review.RestaurentID });
+            }
+            return View(review);
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
         }
 
 
+        // GET: Reviews/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var review = database.Reviews.Find(id);
+            if (review == null)
+            {
+                return HttpNotFound();
+            }
+            return View(review);
+        }
+
+        // POST: Reviews/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            var review = database.Reviews.Find(id);
+            database.Reviews.Remove(review);
+            database.SaveChanges();
+            return RedirectToAction("Index","Home");
+        }
+
+
+
+        protected override void Dispose(bool disposing)
+        {
+            database.Dispose();
+            base.Dispose(disposing);
+        }
 
 
     }

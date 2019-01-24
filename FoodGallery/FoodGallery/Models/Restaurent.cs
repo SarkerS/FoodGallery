@@ -11,7 +11,7 @@ namespace FoodGallery.Models
         public string Name { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
-        public ICollection<RestaurentReview> Reviews { get; set; }
+        public virtual ICollection<RestaurentReview> Reviews { get; set; }
 
 
     }
