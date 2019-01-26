@@ -1,0 +1,47 @@
+﻿@model IEnumerable<FoodGallery.Models.RestaurentListView>
+
+<div class="row" id="restaurentID">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 p-sm-2">
+
+            <div class="card text-white bg-primary" style="max-width: 20rem;">
+                <div class="card-header">@Html.DisplayFor(modelItem => item.Name)</div>
+                <div class="card-body">
+                    <table class="table alternate_color table-hover">
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.City)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.City)
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Country)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Country)
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                Number of Reviews
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NumberofReviews)
+                            </td>
+
+                        </tr>
+                    </table>
+                    <p text-align center><a href=@Url.Action("Index", "Review", new { id = item.Id }) class="btn btn-secondary btn-sm"> See Reviews &raquo;</a></p>
+
+                </div>
+            </div>
+        </div>
+    }
+
+</div>

@@ -13,10 +13,12 @@ namespace FoodGallery.Controllers
     {
         EntityDB _database = new EntityDB();
 
-        public ActionResult Index()
+        public ActionResult Index(string Searchterm = null)
         {
             var view = _database.Restaurents.
                                   OrderByDescending(r => r.Reviews.Average(ratings => ratings.Rating))
+                                  .Where(r => Searchterm == null || r.Name.StartsWith(Searchterm))
+                                  .Take(45)
                                   .Select(r => new RestaurentListView
                                   {
                                       Id = r.Id,
@@ -25,6 +27,11 @@ namespace FoodGallery.Controllers
                                       Country = r.Country,
                                       NumberofReviews = r.Reviews.Count()
                                   });
+
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_RestaurentCard");
+            }
 
             return View(view);
         }

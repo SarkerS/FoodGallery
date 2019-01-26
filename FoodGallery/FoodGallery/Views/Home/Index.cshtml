@@ -12,102 +12,72 @@
 </div>
 
 
-<form method="get" class="form-inline align-self-center mx-auto p-sm-2">
+@*<form method="get" class="form-inline align-self-center mx-auto p-sm-2">
     <input class="form-control col-sm-10 text-center" type="text" placeholder="Search Restaurent by Name">
     <button class="btn btn-success col-sm-2" type="submit">Search</button>
-</form>
+</form>*@
 
 
-<div class="row">
-    @foreach (var item in Model)
-    {
-        <div class="col-md-4 p-sm-2">
+@using (Ajax.BeginForm(new AjaxOptions
+{
+    HttpMethod = "get",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "restaurentID"
+}))
+{
+    <div class="form-inline align-self-center mx-auto p-sm-2">
+        <input name="Searchterm" class="form-control col-sm-10 text-center" type="search" placeholder="Search Restaurent by Name">
+        <button class="btn btn-success col-sm-2" type="submit">Search</button>
+    </div>
+}
 
-            <div class="card text-white bg-primary" style="max-width: 20rem;">
-                <div class="card-header">@Html.DisplayFor(modelItem => item.Name)</div>
-                <div class="card-body">
-                    <table class="table alternate_color table-hover">
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.City)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.City)
-                            </td>
-
-                        </tr>
-                        <tr>
-                            <td>
-                                @Html.DisplayNameFor(model => model.Country)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Country)
-                            </td>
-
-                        </tr>
-                        <tr>
-                            <td>
-                                Number of Reviews
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.NumberofReviews)
-                            </td>
-
-                        </tr>
-                    </table>
-                    <p text-align center><a href=  @Url.Action("Index", "Review", new { id = item.Id })  class="btn btn-secondary btn-sm"> See Reviews &raquo;</a></p>
-
-                </div>
-            </div>
-        </div>
-    }
-
-</div>
+@Html.Partial("_RestaurentCard", Model)
 
 
 
 
 
-    @*<table class="table alternate_color table-hover">
-            <tr class="table-primary">
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.City)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Country)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.NumberofReviews)
-                </th>
-                <th class= "text-right">
-                    Operations
-                </th>
-                <th></th>
-            </tr>
 
-        @foreach (var item in Model) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.City)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Country)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NumberofReviews)
-                </td>
-                <td class="text-right">
-                    @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-                </td>
-            </tr>
-        }
+        @*<table class="table alternate_color table-hover">
+                <tr class="table-primary">
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.City)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Country)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NumberofReviews)
+                    </th>
+                    <th class= "text-right">
+                        Operations
+                    </th>
+                    <th></th>
+                </tr>
 
-        </table>*@
+            @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Country)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NumberofReviews)
+                    </td>
+                    <td class="text-right">
+                        @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                    </td>
+                </tr>
+            }
+
+            </table>*@
